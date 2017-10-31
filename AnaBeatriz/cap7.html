@@ -1,0 +1,40 @@
+<!doctype>
+<html>
+	<head> <title> Procurando o CEP</title>
+	<script src="js/jquery.js"></script>
+		<script>
+			$(function(){
+			$("#cep").blur(function(){
+				var endereco= "http://api.postmon.com.br/v1/cep/";
+				var cep = $("#cep").val();
+				var $xhr=$.get(endereco+cep);
+					$xhr.done(function(endereco){
+						$("#log").val(endereco.logradouro); // quando é input ao invés de .text é val
+						$("#num").val(endereco.num);
+						$("#bairro").val(endereco.bairro);
+						$("#cidade").val(endereco.cidade);
+						$("#estado").val(endereco.estado);
+						
+					});
+					});
+			});
+		
+		</script>
+	</head>
+<body>
+	<form method="GET" action="#">
+			Nome : <input type="text" name="nome">  </input>	
+				<fieldset>
+					<legend> Endereço</legend>
+						CEP : <input type="text" name="cep" id="cep"></input>				<br /><br />
+						Logradouro : <input type="text" name="log" id="log"> </input>		<br /><br />
+						Número : <input type="text" name="num" id="num"></input>			<br /><br />
+						Bairro : <input type="text" name="bairro" id="bairro"></input>		<br /><br />
+						Cidade : <input type="text" name="cidade" id="cidade"></input>		<br /><br />
+						Estado : <input type="text" name="estado" id="estado"> </input>		<br /><br />
+				</fieldset>
+				
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Adicionar Cifrao</title>
+		<script src="./js/jquery.js"></script>
+		
+		<script>
+				;(function ($) {
+					"use strict";
+					$.fn.mascaraCifrao = function(valor){
+						console.log(this);
+						this.val(valor); //adiciona antes
+					}
+					
+				})(window.jQuery)/
+				
+				
+
+				$( document ).ready( function() {
+					$("#valor").mascaraCifrao("R$");
+				});
+				
+				
+			
+		
+		</script>
+	</head>
+	</body>
+		<form>
+			<label> Valor</label><input type="text" class="valor" id="valor" name="valor"/>
+			<button id="enviar">Enviar</button>
+			
+			
+		</form>
+	</body>
+</html>

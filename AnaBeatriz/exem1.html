@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title> Cardápio eletrônico </title>
+	
+	</head>
+	
+	<body>
+		<table>
+		<tr class="produto">
+			<td><div class="nome">café</div></td>
+			<td><div class="preco">R$ 1,00</div></td>
+			<td><input type="number" class="quantity" id="cafe"></td>
+		</tr>
+		<tr class="produo">
+			<td><div class="nome">Leite</div></td>
+			<td><div class="preco">R$ 5,00</div></td>
+			<td><input type="number" class="quantity" id="leite"></td>
+		</tr>
+		<tr>
+			<td><div class="nome">suco</div></td>
+			<td><div class="preco">R$ 2,30</div></td>
+			<td><input type="number" class="quantity" id="suco"></td>
+		</tr>
+		<button id="calc">Calcular</button>
+		<tr>
+			<td>Total de Compras</td>
+			<td><div id="total"></div></td>
+			
+		</tr>
+		</table>
+	
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		/*var /*no menor escopo sendo mais segura / total = document.getElementById("total");//LOCALIZAR 
+			alert(total.innerHTML); //vai descer a pagina de alerta com o total
+		function moneyTextToFloat(text) { //fução para transformar o dinheiro de humanos para computação
+			var cleanText = text.replace("R$ ", "").replace(",", ".");
+			return parseFloat(cleanText);
+		}
+		function floatToMoneyText(value) {//passa de dinheiro de computaçao para linguagem humana
+			var text = (value < 1 ? "0" : "") + Math.floor(value * 100);//apenas duas casas decimais
+			text = "R$ " + text;
+			return text.substr(0, text.length - 2) + "," + text.substr(-2);//adiciona $ e , n anti penúltimo
+		}
+		function lerTotal() {
+			var total = document.getElementById("total");
+			return moneyTextToFloat(total.innerHTML);
+		}
+		function escreveTotal (value){
+			var total = document.getElementById("total");
+			total.innerHTML = floatToMoneyText(value);
+		}
+		function calculaTotalProdutos(){
+			var produtos = document.getElementsByClassName("produto");//retorna tudo da classe produto
+
+			var totalProdutos = 0;
+			for(var pos = 0; pos < produtos.length; pos++) {
+				var precoElementos = produtos[pos].getElementsByClassName("preco");
+					getElementsByClassName("preco");
+				var precoText = precoElementos[0].innerHTML;
+				var preco = moneyTextToFloat(precoText);
+			
+				var qtyElementos = produtos[pos].getElementsByClassName("quantity");
+				var qtyText = qtyElementos[0].value;
+				var quantidade = moneyTextToFloat(qtyText);
+				//console.log(quantity);
+				var subtotal = quantity * price;
+				totalProdutos += subtotal;
+			}
+			return totalProdutos;
+		}
+		function quantidadeMudou() {//quando muda a quantidade
+			lerTotal(calculateTotalProdutos());
+		}
+		function onDocumentLoad() {//vai chamar a funçao de cima toda vez que se  tem uma mudança
+			var textSai = document.getElementsByClassName("quantity");
+			for(var i = 0; i < textSai.length; i++) {
+				textSai[i].onchange = quantidadeMudou;
+			}
+		}
+		window.onload = onDocumentLoad;
+		console.log(totalProdutos);*/
+		
+		var precoLeite = 1.0;
+		var precoCafe = 5.0;
+		var precoSuco = 2.3;
+		
+		function calcularTotal() {
+			var v1 = parseFloat( $( '#leite' ).val() ) * precoLeite;
+			var v2 = parseFloat( $( '#cafe' ).val() ) * precoCafe;
+			var v3 = parseFloat( $( '#suco' ).val() ) * precoSuco;
+			return v1 + v2 + v3;
+		}
+		
+		$( '#calc' ).click(function(){
+			$( '#total' ).html( calcularTotal() );
+		});
+		
+	</script>
+	
+</html>
